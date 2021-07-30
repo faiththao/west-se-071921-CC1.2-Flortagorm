@@ -7,9 +7,6 @@ const fglikes = document.getElementById('fg-likes');
 const fgComments = document.getElementById('fg-comments');
 const commentForm = document.getElementById('comment-form');
 
-
-
-
 fetch(imgURL)
 .then(res => res.json())
 .then(addData)
