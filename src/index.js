@@ -15,13 +15,14 @@ function addData(data) {
     title.innerHTML = data.title;
 
     img.src = data.image;
-
-    fglikes.innerHTML = data.likes;
+    likes = data.likes
+    increaseLikes();
 
     replaceComments(data.comments);
 }
 
-let likes = 19;
+let likes = 0;
+console.log(likes)
 
 likeButtn.addEventListener('click', () => {
     likes += 1
