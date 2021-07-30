@@ -7,17 +7,8 @@ const fglikes = document.getElementById('fg-likes');
 const fgComments = document.getElementById('fg-comments');
 const commentForm = document.getElementById('comment-form');
 
-let likes = 19;
 
-likeButtn.addEventListener('click', () => {
-    likes += 1
-    increaseLikes()
-});
-commentForm.addEventListener('submit', e => {
-    e.preventDefault();
-    addNewComment(e.target.comment.value);
-    e.target.comment.value = '';
-});
+
 
 fetch(imgURL)
 .then(res => res.json())
@@ -33,13 +24,27 @@ function addData(data) {
     replaceComments(data.comments);
 }
 
+let likes = 19;
+
+likeButtn.addEventListener('click', () => {
+    likes += 1
+    increaseLikes()
+});
+
 function increaseLikes() {
     fglikes.innerHTML = `${likes} likes`;
 }
+
 function replaceComments(comments) {
     fgComments.innerHTML = ''
     comments.forEach(comment => addNewComment(comment.content))
 }
+
+commentForm.addEventListener('submit', e => {
+    e.preventDefault();
+    addNewComment(e.target.comment.value);
+    e.target.comment.value = '';
+});
 
 function addNewComment(comment) {
     const newLi = document.createElement('li');
